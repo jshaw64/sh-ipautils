@@ -14,7 +14,7 @@ set_attribute()
 set_cfbundleversion()
 {
   local version="$1"
-  local plist="$1"
+  local plist="$2"
 
   set_attribute "CFBundleVersion" "$version" "$plist"
 }
