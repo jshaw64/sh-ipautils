@@ -11,6 +11,14 @@ set_attribute()
   $PLB -c "Set :$query $value" "$plist"
 }
 
+set_cfbundleversion()
+{
+  local version="$1"
+  local plist="$1"
+
+  set_attribute "CFBundleVersion" "$version" "$plist"
+}
+
 get_attribute()
 {
   local query="$1"
