@@ -152,26 +152,3 @@ increment()
   echo "$v_final"
 
 }
-
-#validate_attr()
-#{
-#  local validate_attr="$1"
-#
-#  for attr in "${ATTRIBUTES[@]}"; do
-#    [ $attr = $validate_attr ] && return 0
-#  done
-#
-#  return $E_ATTR
-#}
-
-#validate_file()
-#{
-#  local validate_file="$1"
-#
-#  if [ ! -e "$validate_file" ]; then
-#    return $E_INFILE
-#  fi
-#
-#  return 0
-#}
-
