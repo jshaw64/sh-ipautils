@@ -2,6 +2,19 @@
 
 PLB=/usr/libexec/PlistBuddy
 
+toggle_log_redir()
+{
+	case $1 in
+		1 )
+			exec 6<&1
+			exec >> $LOG_FILE
+			;;
+		0 )
+			exec 1<&6 6>&-
+			;;
+	esac
+}
+
 set_attribute()
 {
   local query="$1"
