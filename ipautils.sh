@@ -38,6 +38,13 @@ get_attribute()
   echo "$attr"
 }
 
+get_cfbundleversion()
+{
+  local plist="$1"
+
+  get_attribute "CFBundleVersion" "$plist"
+}
+
 generate_entitlements()
 {
   local entitlements_dir_src="$1"
