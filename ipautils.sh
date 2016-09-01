@@ -27,6 +27,14 @@ set_cfbundleshortversion()
   set_attribute "CFBundleShortVersionString" "$version" "$plist"
 }
 
+set_cfbundleid()
+{
+  local id="$1"
+  local plist="$2"
+
+  set_attribute "CFBundleIdentifier" "$id" "$plist"
+}
+
 get_attribute()
 {
   local query="$1"
@@ -50,6 +58,13 @@ get_cfbundleshortversion()
   local plist="$1"
 
   get_attribute "CFBundleShortVersionString" "$plist"
+}
+
+get_cfbundleid()
+{
+  local plist="$1"
+
+  get_attribute "CFBundleIdentifier" "$plist"
 }
 
 generate_entitlements()
