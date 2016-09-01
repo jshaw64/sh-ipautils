@@ -19,6 +19,14 @@ set_cfbundleversion()
   set_attribute "CFBundleVersion" "$version" "$plist"
 }
 
+set_cfbundleshortversion()
+{
+  local version="$1"
+  local plist="$2"
+
+  set_attribute "CFBundleShortVersionString" "$version" "$plist"
+}
+
 get_attribute()
 {
   local query="$1"
