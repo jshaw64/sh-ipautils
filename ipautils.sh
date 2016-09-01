@@ -45,6 +45,13 @@ get_cfbundleversion()
   get_attribute "CFBundleVersion" "$plist"
 }
 
+get_cfbundleshortversion()
+{
+  local plist="$1"
+
+  get_attribute "CFBundleShortVersionString" "$plist"
+}
+
 generate_entitlements()
 {
   local entitlements_dir_src="$1"
