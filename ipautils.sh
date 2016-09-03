@@ -249,19 +249,14 @@ get_payload_dir_app()
 prepare_plist()
 {
 	local payload_dir_app="$1"
-	local src_path="${payload_dir_app}/${SRC_FILE}"
+ local plist_file="$2"
 
-	toggle_log_redir 1
+	local src_path="${payload_dir_app}/${plist_file}"
 
 	if [ ! -e "$src_path" ]; then
-		(( DEBUG || VERBOSE )) && echo "Can't find plist file [$src_path]"
 		exit $E_SRC_FILE
 	fi
 
-	(( DEBUG || VERBOSE )) && echo "Found plist file [$src_path]"
-
-	toggle_log_redir 0
-	
 	echo "$src_path"
 }
 
