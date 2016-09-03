@@ -278,20 +278,14 @@ prepare_profile()
 	local profile_file_src="${profile_dir_src}/${profile_fname_src}"
 	local profile_file_dst="${profile_dir_dst}/${profile_fname_dst}"
 
-	toggle_log_redir 1
 
-	(( DEBUG )) && echo "Copying profile file [$profile_file_src] to [$profile_file_dst]"
 
 	cp "$profile_file_src" "$profile_file_dst"
 
 	if [ ! -e "$profile_file_dst" ]; then
-		(( DEBUG || VERBOSE )) && echo "Something went wrong copying the profile file"
 		exit $E_PROFILE
 	fi
 
-	(( DEBUG )) && echo "Profile file copied to dst"
-
-	toggle_log_redir 0
 
 	echo "$profile_file_dst"
 }
