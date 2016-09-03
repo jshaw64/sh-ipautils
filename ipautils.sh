@@ -237,14 +237,10 @@ get_payload_dir_app()
 	local payload_dir_root="$1/Payload"
 	local payload_dir_app=
 
-	toggle_log_redir 1
-
 	for dir in $payload_dir_root/*; do
-		(( DEBUG || VERBOSE )) && echo "Dir inside Payload is: [$dir]"
 		payload_dir_app="$dir"
 	done
 
-	toggle_log_redir 0
 
 	echo "$payload_dir_app"
 }
