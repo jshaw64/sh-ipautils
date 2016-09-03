@@ -345,14 +345,10 @@ prepare_entitlements()
 	local inject_str="<string>${team_id}.${bundle_id}</string>"
 	local inject_key="string"
 
-	toggle_log_redir 1
-
 	if [ ! -e "$entitlements_file_src" ]; then
-		(( DEBUG || VERBOSE )) && echo "Something went wrong with the entitlements file [$entitlements_file_src]"
 		exit $E_ENTITLEMENTS
 	fi
 
-	(( DEBUG || VERBOSE )) && echo "Found entitlements file [$entitlements_file_src]"
 
 	local tmp_str=
 	while read -r line || [ -n "$line" ]; do
@@ -365,7 +361,6 @@ prepare_entitlements()
 		echo "$line" >> $entitlements_file_dst
 	done < "$entitlements_file_src"
 
-	toggle_log_redir 0
 
 	echo "$entitlements_file_dst"
 }
