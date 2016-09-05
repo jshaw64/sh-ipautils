@@ -185,20 +185,6 @@ ipa_sign()
 	(( DEBUG )) && echo "Signing successful, found sig dir [$sig_dir]"
 }
 
-get_payload_dir_app()
-{
-	local payload_dir_root="$1/Payload"
-	local payload_dir_app=
-
-	for dir in $payload_dir_root/*; do
-		payload_dir_app="$dir"
-	done
-
-
-	echo "$payload_dir_app"
-}
-
-
 prepare_plist()
 {
 	local payload_dir_app="$1"
