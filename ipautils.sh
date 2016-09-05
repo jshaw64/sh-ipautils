@@ -185,29 +185,6 @@ payload_sign()
 	(( DEBUG )) && echo "Signing successful, found sig dir [$sig_dir]"
 }
 
-payload_sig_rm()
-{
-	local payload_dir_app="$1"
-	local sig_dir="${payload_dir_app}/_CodeSignature"
-
-	if [ ! -d "$sig_dir" ]; then
-		(( DEBUG || VERBOSE )) && echo "Can't find sig dir [$sig_dir]"
-		exit $E_SIG
-	fi
-
-	(( DEBUG )) && echo "Found sig dir [$sig_dir]"
-	(( DEBUG )) && echo "Deleting sig dir..."
-
-	rm -r "$sig_dir"
-
-	if [ -d "$sig_dir" ]; then
-		(( DEBUG || VERBOSE )) && echo "Something went wrong deleting [$sig_dir]"
-		exit $E_SIG
-	fi
-
-	(( DEBUG )) && echo "Sig dir deleted successfully"
-}
-
 get_payload_dir_app()
 {
 	local payload_dir_root="$1/Payload"
