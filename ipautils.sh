@@ -166,30 +166,6 @@ increment()
 
 }
 
-payload_pack()
-{
-	local tmp_dir="$1"
-	local payload_dir_root="$2"
-	local binary_out_dir="$3"
-	local binary_out_fname="$4"
-	local binary_out_path="${binary_out_dir}/${binary_out_fname}"
-
-	(( DEBUG )) && echo "Packaging payload [$payload_dir_root] to [$binary_out_path]"
-
-	(
-	cd "$tmp_dir"
-	zip -qr "$binary_out_fname" "./Payload"
-	cp "$binary_out_fname" "$binary_out_path"
-	)
-
-	if [ ! -e "$binary_out_path" ]; then
-		(( DEBUG || VERBOSE )) && echo "There was an issue packaging, can't find [$binary_out_path]"
-		exit "$E_BINARY"
-	fi
-
-	(( DEBUG )) && echo "Binary [$binary_out_path] created successfully"
-}
-
 payload_sign()
 { 
 	local sign_id="$1"
