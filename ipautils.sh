@@ -236,27 +236,6 @@ prepare_plist()
 	echo "$src_path"
 }
 
-prepare_profile()
-{
-	local profile_dir_src="$1"
-	local profile_dir_dst="$2"
-	local profile_fname_src="$3"
-	local profile_fname_dst="embedded.mobileprovision"
-	local profile_file_src="${profile_dir_src}/${profile_fname_src}"
-	local profile_file_dst="${profile_dir_dst}/${profile_fname_dst}"
-
-
-
-	cp "$profile_file_src" "$profile_file_dst"
-
-	if [ ! -e "$profile_file_dst" ]; then
-		exit $E_PROFILE
-	fi
-
-
-	echo "$profile_file_dst"
-}
-
 prepare_entitlements()
 {
 	local entitlements_dir_src="$1"
