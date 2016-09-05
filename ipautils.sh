@@ -277,32 +277,6 @@ prepare_payload()
 	(( DEBUG )) && echo "Found payload dir [$payload_dir_root]"
 }
 
-prepare_binary()
-{
-	local binary_dir_src="$1"
-	local binary_dir_dst="$2"
-	local binary_file_name="$3"
-	local binary_fname_dst="$4"
-
-	local binary_file_src="${binary_dir_src}/${binary_file_name}"
-	#local binary_file_dst="${binary_dir_dst}/${binary_fname_dst}"
-	local binary_file_dst="${binary_dir_dst}/${binary_file_name}"
-	
-	if [ ! -e "$binary_file_src" ]; then
-		(( DEBUG || VERBOSE )) && echo "Something went wrong with the source binary file [$binary_file_src]"
-		exit $E_BINARY
-	fi
-
-	(( DEBUG )) && echo "Copying binary from [$binary_file_src] to [$binary_file_dst].."
-
-	cp "$binary_file_src" "$binary_file_dst"
-
-	if [ ! -e "$binary_file_dst" ]; then
-		(( DEBUG || VERBOSE )) && echo "Something went wrong with the dest binary file [$binary_file_dst]"
-		exit $E_BINARY
-	fi
-}
-
 prepare_entitlements()
 {
 	local entitlements_dir_src="$1"
