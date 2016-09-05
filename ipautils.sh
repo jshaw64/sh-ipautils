@@ -166,7 +166,7 @@ increment()
 
 }
 
-payload_sign()
+ipa_sign()
 { 
 	local sign_id="$1"
 	local entitlements_path="$2"
