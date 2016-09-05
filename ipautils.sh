@@ -185,20 +185,6 @@ ipa_sign()
 	(( DEBUG )) && echo "Signing successful, found sig dir [$sig_dir]"
 }
 
-prepare_plist()
-{
-	local payload_dir_app="$1"
- local plist_file="$2"
-
-	local src_path="${payload_dir_app}/${plist_file}"
-
-	if [ ! -e "$src_path" ]; then
-		exit $E_SRC_FILE
-	fi
-
-	echo "$src_path"
-}
-
 prepare_entitlements()
 {
 	local entitlements_dir_src="$1"
