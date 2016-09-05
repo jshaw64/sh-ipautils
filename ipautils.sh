@@ -257,26 +257,6 @@ prepare_profile()
 	echo "$profile_file_dst"
 }
 
-prepare_payload()
-{
-	local binary_dir_dst="$1"
-	local binary_file_name="$2"
-	local binary_file_dst="${binary_dir_dst}/${binary_file_name}" # unzip fails on quoted dir
-
-	(( DEBUG )) && echo "Unzipping binary [$binary_file_dst]"
-
-	unzip "$binary_file_dst" -d "$binary_dir_dst" > /dev/null
-
-	local payload_dir_root="${binary_dir_dst}/Payload"
-
-	if [ ! -d "$payload_dir_root" ]; then
-		(( DEBUG || VERBOSE )) && echo "Something went wrong unzipping [$binary_file_dst], [$payload_dir_root] does not exist"
-		exit $E_PAYLOAD
-	fi
-
-	(( DEBUG )) && echo "Found payload dir [$payload_dir_root]"
-}
-
 prepare_entitlements()
 {
 	local entitlements_dir_src="$1"
