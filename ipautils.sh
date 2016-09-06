@@ -203,6 +203,5 @@ prepare_entitlements()
 		echo "$line" >> $entitlements_file_dst
 	done < "$entitlements_file_src"
 
-
-	echo "$entitlements_file_dst"
+  return 0
 }
