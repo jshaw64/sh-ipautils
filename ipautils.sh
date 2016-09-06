@@ -171,7 +171,7 @@ ipa_sign()
     return  $E_SIG
   fi
 
-	(( DEBUG )) && echo "Signing successful, found sig dir [$sig_dir]"
+  return 0
 }
 
 prepare_entitlements()
