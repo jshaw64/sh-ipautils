@@ -155,22 +155,21 @@ increment()
 
 ipa_sign()
 { 
-	local sign_id="$1"
-	local entitlements_path="$2"
-	local payload_dir_app="$3"
+  local sign_id="$1"
+  local entitlements_path="$2"
+  local payload_dir_app="$3"
 
   local sig_dir="${payload_dir_app}/_CodeSignature"
   if [ -d "$sig_dir" ]; then
     return  $E_SIG
   fi
 
-	codesign -f -s "$sign_id" --entitlements "$entitlements_path" "$payload_dir_app" > /dev/null
+  codesign -f -s "$sign_id" --entitlements "$entitlements_path" "$payload_dir_app" > /dev/null
 
-	local sig_dir="${payload_dir_app}/_CodeSignature"
-	if [ ! -d "$sig_dir" ]; then
-		(( DEBUG || VERBOSE )) && echo "Something went wrong signing, can't find sig dir [$sig_dir]"
-		exit $E_SIG
-	fi
+  sig_dir="${payload_dir_app}/_CodeSignature"
+  if [ ! -d "$sig_dir" ]; then
+    return  $E_SIG
+  fi
 
 	(( DEBUG )) && echo "Signing successful, found sig dir [$sig_dir]"
 }
