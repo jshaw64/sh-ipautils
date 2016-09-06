@@ -159,7 +159,10 @@ ipa_sign()
 	local entitlements_path="$2"
 	local payload_dir_app="$3"
 
-	(( DEBUG )) && echo "Signing payload [$payload_dir_app] with identity [$sign_id] and entitlements [$entitlements_path]"
+  local sig_dir="${payload_dir_app}/_CodeSignature"
+  if [ -d "$sig_dir" ]; then
+    return  $E_SIG
+  fi
 
 	codesign -f -s "$sign_id" --entitlements "$entitlements_path" "$payload_dir_app" > /dev/null
 
