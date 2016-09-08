@@ -212,3 +212,10 @@ print_entitlements()
 
   codesign -d --entitlements :- "$1"
 }
+
+print_mobileprovision()
+{
+  local embedded_prov_path="$1"
+
+  security cms -D -i "$embedded_prov_path"
+}
