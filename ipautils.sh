@@ -205,3 +205,10 @@ prepare_entitlements()
 
   return 0
 }
+
+print_entitlements()
+{
+  local payload_app_dir="$1"
+
+  codesign -d --entitlements :- "$1"
+}
