@@ -35,6 +35,15 @@ set_cfbundleid()
   set_attribute "CFBundleIdentifier" "$id" "$plist"
 }
 
+set_ent_app_id()
+{
+  local team_id="$1"
+  local app_id="$2"
+  local plist="$3"
+
+  set_attribute "application-identifier" "${team_id}.${app_id}" "$plist"
+}
+
 get_attribute()
 {
   local query="$1"
