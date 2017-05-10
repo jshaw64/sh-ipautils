@@ -84,6 +84,13 @@ get_cfbundleid()
   get_attribute "CFBundleIdentifier" "$plist"
 }
 
+get_ent_app_id()
+{
+  local plist="$1"
+
+  get_attribute "application-identifier" "${plist}"
+}
+
 generate_entitlements()
 {
   local entitlements_dir_src="$1"
