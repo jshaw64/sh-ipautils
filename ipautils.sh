@@ -44,6 +44,14 @@ set_ent_app_id()
   set_attribute "application-identifier" "${team_id}.${app_id}" "$plist"
 }
 
+set_ent_team_id()
+{
+  local id="$1"
+  local plist="$2"
+
+  set_attribute "com.apple.developer.team-identifier" "$id" "$plist"
+}
+
 get_attribute()
 {
   local query="$1"
