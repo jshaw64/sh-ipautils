@@ -91,6 +91,13 @@ get_ent_app_id()
   get_attribute "application-identifier" "${plist}"
 }
 
+get_ent_team_id()
+{
+  local plist="$1"
+
+  get_attribute "com.apple.developer.team-identifier" "${plist}"
+}
+
 generate_entitlements()
 {
   local entitlements_dir_src="$1"
