@@ -195,7 +195,7 @@ ipa_sign_payload()
     return  $E_SIG
   fi
 
-  codesign -f -s "$sign_id" --entitlements "$entitlements_path" "$payload_dir_app" &>/dev/null
+  codesign -f -s "$sign_id" --entitlements "$entitlements_path" "$payload_dir_app"
 
   sig_dir="${payload_dir_app}/_CodeSignature"
   if [ ! -d "$sig_dir" ]; then
