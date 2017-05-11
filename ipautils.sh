@@ -6,9 +6,11 @@ set_attribute()
 {
   local query="$1"
   local value="$2"
-  local plist="$3"
+  local value_type="$3"
+  local plist="$4"
 
   $PLB -c "Set :$query $value" "$plist"
+  [ $? -gt 0 ] &&  $PLB -c "Add :$query $value_type $value" "$plist"
 }
 
 set_cfbundleversion()
@@ -16,7 +18,7 @@ set_cfbundleversion()
   local version="$1"
   local plist="$2"
 
-  set_attribute "CFBundleVersion" "$version" "$plist"
+  set_attribute "CFBundleVersion" "$version" "string" "$plist"
 }
 
 set_cfbundleshortversion()
@@ -24,7 +26,7 @@ set_cfbundleshortversion()
   local version="$1"
   local plist="$2"
 
-  set_attribute "CFBundleShortVersionString" "$version" "$plist"
+  set_attribute "CFBundleShortVersionString" "$version" "string" "$plist"
 }
 
 set_cfbundleid()
@@ -32,7 +34,7 @@ set_cfbundleid()
   local id="$1"
   local plist="$2"
 
-  set_attribute "CFBundleIdentifier" "$id" "$plist"
+  set_attribute "CFBundleIdentifier" "$id" "string" "$plist"
 }
 
 set_ent_app_id()
@@ -41,7 +43,7 @@ set_ent_app_id()
   local app_id="$2"
   local plist="$3"
 
-  set_attribute "application-identifier" "${team_id}.${app_id}" "$plist"
+  set_attribute "application-identifier" "${team_id}.${app_id}" "string" "$plist"
 }
 
 set_ent_team_id()
@@ -49,7 +51,7 @@ set_ent_team_id()
   local id="$1"
   local plist="$2"
 
-  set_attribute "com.apple.developer.team-identifier" "$id" "$plist"
+  set_attribute "com.apple.developer.team-identifier" "$id" "string" "$plist"
 }
 
 get_attribute()
