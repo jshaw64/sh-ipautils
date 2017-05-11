@@ -98,32 +98,6 @@ get_ent_team_id()
   get_attribute "com.apple.developer.team-identifier" "${plist}"
 }
 
-generate_entitlements()
-{
-  local entitlements_dir_src="$1"
-  local entitlements_dir_dst="$2"
-  local entitlements_file_name="$3"
-  local bundle_id="$4"
-  local team_id="$5"
-
-  local entitlements_file_src="${entitlements_dir_src}/${entitlements_file_name}"
-  local entitlements_file_dst="${entitlements_dir_dst}/${entitlements_file_name}"
-  local inject_str="<string>${team_id}.${bundle_id}</string>"
-  local inject_key="string"
-
-  local tmp_str=
-  while read -r line || [ -n "$line" ]; do
-    tmp_str=${line%%>*}
-    tmp_str=${tmp_str#<*}
-    if [ "$tmp_str" = "$inject_key" ]; then
-     line="$inject_str"
-    fi
-    echo "$line" >> $entitlements_file_dst
-  done < "$entitlements_file_src"
-
-  echo "$entitlements_file_dst"
-}
-
 increment_v_sem()
 {
 :
