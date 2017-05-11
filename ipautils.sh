@@ -62,6 +62,16 @@ set_ent_get_task_allow()
   set_attribute "get-task-allow" "$value" "bool" "$plist"
 }
 
+set_ent_keychain_access()
+{
+  local team_id="$1"
+  local app_id="$2"
+  local plist="$3"
+
+  set_attribute "keychain-access-groups" "" "array" "$plist"
+  set_attribute "keychain-access-groups:" "${team_id}.${app_id}" "string" "$plist"
+}
+
 get_attribute()
 {
   local query="$1"
