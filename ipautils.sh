@@ -190,11 +190,6 @@ ipa_sign()
   local entitlements_path="$2"
   local payload_dir_app="$3"
 
-  local sig_dir="${payload_dir_app}/_CodeSignature"
-  if [ -d "$sig_dir" ]; then
-    return  $E_SIG
-  fi
-
   codesign -f -s "$sign_id" --entitlements "$entitlements_path" "$payload_dir_app" &>/dev/null
 
   sig_dir="${payload_dir_app}/_CodeSignature"
