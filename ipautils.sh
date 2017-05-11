@@ -205,6 +205,17 @@ ipa_sign_payload()
   return 0
 }
 
+ipa_sign_frameworks()
+{
+  local sign_id="$1"
+  local entitlements_path="$2"
+  local frameworks_dir="$3"
+
+  codesign -f -s "$sign_id" --entitlements "$entitlements_path" "$payload_dir_app"
+
+  return 0
+}
+
 prepare_entitlements()
 {
 	local entitlements_dir_src="$1"
