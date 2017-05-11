@@ -254,14 +254,19 @@ get_entitlements_path()
   local payload_unpack_dir="$2"
   local entitlements_src_dir=""
   local entitlements_src_file="Entitlements.plist"
+  local entitlements_src_path=""
 
   if [ -e "${payload_app_dir}/${entitlements_src_file}" ]; then
     entitlements_src_dir="${payload_app_dir}"
+    entitlements_src_path="${entitlements_src_dir}/${entitlements_src_file}"
   elif [ -e "${entitlements_src_dir_payload}/${entitlements_src_file}" ]; then
     entitlements_src_dir="${payload_unpack_dir}"
+    entitlements_src_path="${entitlements_src_dir}/${entitlements_src_file}"
+  else
+    entitlements_src_path=""
   fi
 
-  echo "${entitlements_src_dir}/${entitlements_src_file}"
+  echo "${entitlements_src_path}"
 }
 
 print_entitlements()
