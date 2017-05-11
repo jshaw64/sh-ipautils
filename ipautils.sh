@@ -54,6 +54,14 @@ set_ent_team_id()
   set_attribute "com.apple.developer.team-identifier" "$id" "string" "$plist"
 }
 
+set_ent_get_task_allow()
+{
+  local value="$1"
+  local plist="$2"
+
+  set_attribute "get-task-allow" "$value" "bool" "$plist"
+}
+
 get_attribute()
 {
   local query="$1"
