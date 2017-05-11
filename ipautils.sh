@@ -210,6 +210,28 @@ ipa_sign_frameworks()
   return 0
 }
 
+generate_entitlements()
+{
+  local entitlements_dst_dir="$1"
+  local app_id="$2"
+  local team_id="$3"
+
+  local entitlements_file="Entitlements.plist"
+  local entitlements_dst_path="${entitlements_dst_dir}/${entitlements_file}"
+
+  set_ent_app_id "${team_id}" "${app_id}" "${entitlements_dst_path}"
+  set_ent_team_id "${team_id}" "${entitlements_dst_path}"
+  set_ent_get_task_allow "false" "${entitlements_dst_path}"
+  set_ent_keychain_access "${team_id}" "*" "${entitlements_dst_path}"
+
+  if [ ! -e "${entitlements_dst_path}" ]; then
+    return $E_GEN_ENT
+  fi
+
+  return 0
+}
+
+
 get_entitlements_path()
 {
   local payload_app_dir="$1"
