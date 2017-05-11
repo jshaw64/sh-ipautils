@@ -184,8 +184,8 @@ increment()
 
 }
 
-ipa_sign()
-{ 
+ipa_sign_payload()
+{
   local sign_id="$1"
   local entitlements_path="$2"
   local payload_dir_app="$3"
