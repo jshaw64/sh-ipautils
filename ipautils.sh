@@ -37,6 +37,14 @@ set_cfbundleid()
   set_attribute "CFBundleIdentifier" "$id" "string" "$plist"
 }
 
+set_ns_photo_usage_desc()
+{
+  local desc="$1"
+  local plist="$2"
+
+  set_attribute "NSPhotoLibraryUsageDescription" "$desc" "string" "$plist"
+}
+
 set_ent_app_id()
 {
   local team_id="$1"
