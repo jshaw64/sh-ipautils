@@ -256,6 +256,28 @@ generate_entitlements()
   return 0
 }
 
+generate_entitlements_xcent()
+{
+  local entitlements_src_dir="$1"
+  local entitlements_src_file="$2"
+  local entitlements_src_path="${entitlements_src_dir}/${entitlements_src_file}"
+  local entitlements_dst_dir_xcent="$3"
+  local entitlements_dst_file_xcent="archived-expanded-entitlements.xcent"
+  local entitlements_dst_path_xcent="${entitlements_dst_dir_xcent}/${entitlements_dst_file_xcent}"
+
+  if [ ! -e "${entitlements_src_path}" ]; then
+    return $E_GEN_ENT
+  fi
+
+  cat "${entitlements_dst_path_xcent}"
+  cp -f "${entitlements_src_path}" "${entitlements_dst_path_xcent}"
+
+  if [ ! -e "${entitlements_dst_path_xcent}" ]; then
+    return $E_GEN_ENT
+  fi
+
+  return 0
+}
 
 get_entitlements_path()
 {
