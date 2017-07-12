@@ -243,7 +243,7 @@ get_entitlements_path()
   if [ -e "${payload_app_dir}/${entitlements_src_file}" ]; then
     entitlements_src_dir="${payload_app_dir}"
     entitlements_src_path="${entitlements_src_dir}/${entitlements_src_file}"
-  elif [ -e "${entitlements_src_dir_payload}/${entitlements_src_file}" ]; then
+  elif [ -e "${payload_unpack_dir}/${entitlements_src_file}" ]; then
     entitlements_src_dir="${payload_unpack_dir}"
     entitlements_src_path="${entitlements_src_dir}/${entitlements_src_file}"
   else
