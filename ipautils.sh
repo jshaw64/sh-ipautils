@@ -88,6 +88,14 @@ set_ent_beta_reports_active()
   set_attribute "beta-reports-active" "$value" "bool" "$plist"
 }
 
+set_ent_apns()
+{
+  local value="$1"
+  local plist="$2"
+
+  set_attribute "aps-environment" "$value" "string" "$plist"
+}
+
 get_attribute()
 {
   local query="$1"
