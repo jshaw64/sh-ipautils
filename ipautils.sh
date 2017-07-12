@@ -234,8 +234,8 @@ generate_entitlements()
 
 get_entitlements_path()
 {
-  local payload_app_dir="$1"
-  local payload_unpack_dir="$2"
+  local payload_unpack_dir="$1"
+  local payload_app_dir="$2"
   local entitlements_src_dir=""
   local entitlements_src_file="Entitlements.plist"
   local entitlements_src_path=""
