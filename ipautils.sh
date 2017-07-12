@@ -80,6 +80,14 @@ set_ent_keychain_access()
   set_attribute "keychain-access-groups:" "${team_id}.${app_id}" "string" "$plist"
 }
 
+set_ent_beta_reports_active()
+{
+  local value="$1"
+  local plist="$2"
+
+  set_attribute "beta-reports-active" "$value" "bool" "$plist"
+}
+
 get_attribute()
 {
   local query="$1"
