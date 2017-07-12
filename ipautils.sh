@@ -229,10 +229,11 @@ ipa_sign_frameworks()
   local entitlements_path="$2"
   local frameworks_dir="$3"
 
-  codesign -f -s "$sign_id" --entitlements "$entitlements_path" $payload_dir_app
+  codesign -f -s "$sign_id" $payload_dir_app
 
   return 0
 }
+
 
 generate_entitlements()
 {
