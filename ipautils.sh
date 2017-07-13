@@ -128,11 +128,11 @@ get_cfbundleid()
   get_attribute "CFBundleIdentifier" "$plist"
 }
 
-get_ent_app_id()
+get_ns_photo_usage_desc()
 {
   local plist="$1"
 
-  get_attribute "application-identifier" "${plist}"
+  get_attribute "NSPhotoLibraryUsageDescription " "$plist"
 }
 
 get_ent_team_id()
@@ -141,6 +141,35 @@ get_ent_team_id()
 
   get_attribute "com.apple.developer.team-identifier" "${plist}"
 }
+
+get_ent_get_task_allow()
+{
+  local plist="$1"
+
+  get_attribute "get-task-allow " "$plist"
+}
+
+get_ent_beta_reports_active()
+{
+  local plist="$1"
+
+  get_attribute "beta-reports-active" "$plist"
+}
+
+get_ent_apns()
+{
+  local plist="$1"
+
+  get_attribute "aps-environment" "$plist"
+}
+
+get_ent_app_id()
+{
+  local plist="$1"
+
+  get_attribute "application-identifier" "${plist}"
+}
+
 
 increment_v_sem()
 {
