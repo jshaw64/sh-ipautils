@@ -298,7 +298,6 @@ generate_entitlements_xcent()
     return $E_GEN_ENT
   fi
 
-  cat "${entitlements_dst_path_xcent}"
   cp -f "${entitlements_src_path}" "${entitlements_dst_path_xcent}"
 
   if [ ! -e "${entitlements_dst_path_xcent}" ]; then
