@@ -307,6 +307,45 @@ generate_entitlements_xcent()
   return 0
 }
 
+extract_entitlements_from_pp()
+{
+  local entitlements_dst_path="$1"
+  local prov_prof_file_path="$2"
+
+  local entitlements_file_header="$( cat <<EOF
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+EOF
+)"
+
+  echo "${entitlements_file_header}" > "${entitlements_dst_path}"
+
+  local OIFS=$IFS
+  IFS=""
+
+  regexDictBegin="[[:space:]]*<key>Entitlements</key>[[:space:]]*"
+  regexDictEnd="[[:space:]]*</dict>[[:space:]]*"
+
+  local start=0
+
+  while read -r line; do
+    if [[ $line =~ $regexDictBegin ]]; then
+      start=1
+    elif [ "$start" = 1 ]; then
+      echo "$line" >> "${entitlements_dst_path}"
+    fi
+    if [[ $line =~ $regexDictEnd ]]; then
+      break;
+    fi
+  done < "${prov_prof_file_path}"
+
+  local entitlements_file_footer="</plist>"
+  echo "$entitlements_file_footer" >> "${entitlements_dst_path}"
+
+  IFS=$OIFS
+}
+
 get_entitlements_path()
 {
   local payload_unpack_dir="$1"
