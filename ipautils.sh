@@ -255,10 +255,9 @@ ipa_sign_payload()
 ipa_sign_frameworks()
 {
   local sign_id="$1"
-  local entitlements_path="$2"
-  local frameworks_dir="$3"
+  local payload_dir_app="$2"
 
-  codesign -f -s "$sign_id" $payload_dir_app
+  codesign -f -s "$sign_id" "$payload_dir_app"/Frameworks/*
 
   return 0
 }
