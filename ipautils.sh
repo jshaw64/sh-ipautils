@@ -37,6 +37,14 @@ set_cfbundleid()
   set_attribute "CFBundleIdentifier" "$id" "string" "$plist"
 }
 
+set_cfbundledisplayname()
+{
+  local display_name="$1"
+  local plist="$2"
+
+  set_attribute "CFBundleDisplayName" "$display_name" "string" "$plist"
+}
+
 set_ns_photo_usage_desc()
 {
   local desc="$1"
@@ -126,6 +134,13 @@ get_cfbundleid()
   local plist="$1"
 
   get_attribute "CFBundleIdentifier" "$plist"
+}
+
+get_cfbundledisplayname()
+{
+  local plist="$1"
+
+  get_attribute "CFBundleDisplayName" "$plist"
 }
 
 get_ns_photo_usage_desc()
